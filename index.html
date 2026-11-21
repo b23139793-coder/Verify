@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ready to Verify</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;
+ background:#2b2d31;color:white;
+ font-family:Arial,sans-serif;
+ display:flex;align-items:center;
+ justify-content:center;
+}
+.container{
+ width:100%;max-width:520px;
+ padding:20px;text-align:center;
+}
+h1{font-size:30px;margin-bottom:72px}
+button{
+ width:100%;max-width:475px;height:64px;
+ background:#5865f2;color:white;
+ border:0;border-radius:13px;
+ font-size:20px;font-weight:bold;
+ cursor:pointer;
+}
+button:active{transform:scale(.98)}
+.note{margin-top:18px;font-size:11px;color:#b5bac1}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Ready to Verify</h1>
+<button onclick="verify()">Verify with Discord</button>
+<div class="note">Secure verification through official Discord OAuth2</div>
+</div>
+<script>
+const CLIENT_ID="1573519629953802321";
+
+function verify(){
+ const url=new URL("https://discord.com/oauth2/authorize");
+ url.searchParams.set("client_id",CLIENT_ID);
+ url.searchParams.set("scope","bot applications.commands");
+ url.searchParams.set("permissions","0");
+ location.href=url.toString();
+}
+</script>
+</body>
+</html>
